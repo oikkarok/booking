@@ -8,7 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 
 import org.hibernate.annotations.DynamicUpdate;
@@ -32,9 +32,11 @@ public class Disponibilita {
     private int id;
     
     @NonNull
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_camera", referencedColumnName = "id", nullable=false)
+    @OneToOne(targetEntity = Camera.class, fetch = FetchType.LAZY)
+    @JoinColumn(name = "id")
     private Camera camera;
     
-    private Date dataPrenotazione;
+    private Date dataInizioPrenotazione;
+    
+    private Date dataFinePrenotazione;
 }

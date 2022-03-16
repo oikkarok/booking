@@ -13,5 +13,10 @@ public class DisponibilitaDto {
 
     private int id;
     
-    private Date dataPrenotazione;
+    private CameraDto camera;
+    
+    private Date dataInizioPrenotazione;
+    
+    private Date dataFinePrenotazione;
+    
 }

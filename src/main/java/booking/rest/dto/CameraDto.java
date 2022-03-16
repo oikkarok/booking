@@ -11,4 +11,8 @@ public class CameraDto {
 
     private int id;
     
+    private TipoCameraDto tipoCamera;
+
+    private HotelDto hotel;
+    
 }
