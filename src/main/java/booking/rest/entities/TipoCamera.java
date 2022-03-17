@@ -35,8 +35,10 @@ public class TipoCamera {
     @JoinColumn(name = "id")
     private List<Camera> camera;
     
+    @NonNull
     private String tipologia;
     
+    @NonNull
     private int posti;
 
 

@@ -35,5 +35,6 @@ public class TipoHotel {
     @JoinColumn(name = "id")
     private List<Hotel> hotel;
     
+    @NonNull
     private String tipologia;
 }

@@ -18,6 +18,7 @@ booking\rest\entities\TipoCamera.class
 booking\rest\entities\Disponibilita.class
 booking\rest\service\HotelService.class
 booking\rest\RestApplication.class
+booking\rest\security\SecurityConfig.class
 booking\rest\service\CameraService.class
 booking\rest\repository\TipoCameraRepository.class
 booking\rest\service\DisponibilitaService.class

@@ -40,14 +40,19 @@ public class Hotel {
     @JoinColumn(name = "id")
     private List<Camera> camera;
     
+    @NonNull
     private String indirizzo;
     
+    @NonNull
     private String email;
     
+    @NonNull
     private String telefono;
     
+    @NonNull
     private String nome;
     
+    @NonNull
     private int numero_camere;
     
     private int numero_stelle;
