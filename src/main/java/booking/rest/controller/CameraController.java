@@ -22,6 +22,7 @@ import booking.rest.service.CameraService;
 
 @Controller
 public class CameraController {
+    
     @Autowired
     ModelMapper modelMapper;
 
@@ -103,4 +104,5 @@ public class CameraController {
 
 	return new ResponseEntity<>(null, HttpStatus.OK);
     }
+    
 }

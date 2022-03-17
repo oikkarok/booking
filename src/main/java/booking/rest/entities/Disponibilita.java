@@ -41,4 +41,5 @@ public class Disponibilita {
     
     @NonNull
     private Date dataFinePrenotazione;
+    
 }

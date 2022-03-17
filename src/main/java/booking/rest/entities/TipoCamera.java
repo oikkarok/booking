@@ -41,5 +41,4 @@ public class TipoCamera {
     @NonNull
     private int posti;
 
-
 }
