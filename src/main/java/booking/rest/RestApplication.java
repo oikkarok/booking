@@ -30,10 +30,10 @@ public class RestApplication extends SpringBootServletInitializer {
     }
 
 	@Bean
-	public Docket studentAPI() {
+	public Docket controllerAPI() {
 		return new Docket(DocumentationType.OAS_30)
 			.select()
-			.apis(RequestHandlerSelectors.basePackage("booking.rest"))
+			.apis(RequestHandlerSelectors.basePackage("booking.rest.controller"))
 			.build();
 	}
 }

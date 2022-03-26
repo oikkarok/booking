@@ -15,6 +15,7 @@ C:\Users\oikka\eclipse-workspace\BookingRest\src\main\java\booking\rest\entities
 C:\Users\oikka\eclipse-workspace\BookingRest\src\main\java\booking\rest\dto\DisponibilitaDto.java
 C:\Users\oikka\eclipse-workspace\BookingRest\src\main\java\booking\rest\dto\CameraDto.java
 C:\Users\oikka\eclipse-workspace\BookingRest\src\main\java\booking\rest\entities\TipoCamera.java
+C:\Users\oikka\eclipse-workspace\BookingRest\src\main\java\booking\rest\security\SecurityConfig.java
 C:\Users\oikka\eclipse-workspace\BookingRest\src\main\java\booking\rest\controller\DisponibilitaController.java
 C:\Users\oikka\eclipse-workspace\BookingRest\src\main\java\booking\rest\dto\HotelDto.java
 C:\Users\oikka\eclipse-workspace\BookingRest\src\main\java\booking\rest\service\HotelService.java

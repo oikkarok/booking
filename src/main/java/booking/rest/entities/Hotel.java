@@ -32,6 +32,7 @@ public class Hotel {
     @SequenceGenerator(name = "hotel_sequence", schema = "booking", sequenceName = "SQhotel", allocationSize = 1)
     private int id;
     
+    @NonNull
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_tipo_hotel", referencedColumnName = "id", nullable=false)
     private TipoHotel tipoHotel;
@@ -40,15 +41,21 @@ public class Hotel {
     @JoinColumn(name = "id")
     private List<Camera> camera;
     
+    @NonNull
     private String indirizzo;
     
+    @NonNull
     private String email;
     
+    @NonNull
     private String telefono;
     
+    @NonNull
     private String nome;
     
+    @NonNull
     private int numero_camere;
     
     private int numero_stelle;
+    
 }
