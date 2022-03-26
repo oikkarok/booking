@@ -2,3 +2,5 @@
 /logs/
 /resource/
 
+.settings/
+dump/dump-booking-202203252314.sql
