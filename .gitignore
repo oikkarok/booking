@@ -1,17 +1,6 @@
-/target/
-/resource/
-<<<<<<< HEAD
-<<<<<<< HEAD
+target/
+resource/
+logs/
+.settings/
+dump/
 
-.settings/
-dump/dump-booking-202203252314.sql
-=======
-/logs/
-.settings/
-dump/
->>>>>>> 35121b8... ignore
-=======
-/logs/
-.settings/
-dump/
->>>>>>> e92992c7d2b820577c46a48a2e2189b937909fc0
