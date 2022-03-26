@@ -1,6 +1,12 @@
 /target/
 /logs/
 /resource/
+<<<<<<< HEAD
 
 .settings/
 dump/dump-booking-202203252314.sql
+=======
+/logs/
+.settings/
+dump/
+>>>>>>> 35121b8... ignore
