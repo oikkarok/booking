@@ -1,24 +1,21 @@
 package booking.rest.security;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Map.Entry;
 
 import org.joda.time.DateTime;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTCreator;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.interfaces.DecodedJWT;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 public class JwtProvider {
 
     private static final Logger log = LoggerFactory.getLogger(JwtProvider.class);
-    private static final String issuer = "demo-service";
+    private static final String issuer = "booking.rest";
 
     /**
      * Create jwt string.

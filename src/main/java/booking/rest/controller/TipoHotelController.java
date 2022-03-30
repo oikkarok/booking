@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
 
-import org.modelmapper.ModelMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,9 +22,6 @@ import booking.rest.service.TipoHotelService;
 
 @RestController
 public class TipoHotelController {
-
-    @Autowired
-    ModelMapper modelMapper;
 
     @Autowired
     TipoHotelService service;
