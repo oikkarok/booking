@@ -30,7 +30,7 @@ public class JwtProvider {
                 .withSubject(subject)
                 .withIssuer(issuer)
                 .withIssuedAt(DateTime.now().toDate())
-                .withExpiresAt(DateTime.now().plusMonths(1).toDate());
+                .withExpiresAt(DateTime.now().plusMinutes(10).toDate());
 
         if (payloadClaims != null && !payloadClaims.isEmpty()) {
             
