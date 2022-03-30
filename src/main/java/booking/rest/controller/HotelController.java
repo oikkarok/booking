@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
 
-import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,10 +19,6 @@ import booking.rest.service.HotelService;
 
 @RestController
 public class HotelController {
-
-
-    @Autowired
-    ModelMapper modelMapper;
 
     @Autowired
     HotelService service;

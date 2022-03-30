@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
 
-import org.modelmapper.ModelMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,9 +21,6 @@ import booking.rest.service.CameraService;
 
 @Controller
 public class CameraController {
-    
-    @Autowired
-    ModelMapper modelMapper;
 
     @Autowired
     CameraService service;
