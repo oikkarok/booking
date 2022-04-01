@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -47,8 +48,8 @@ public class HotelController {
 	return new ResponseEntity<Integer>(service.getId(), HttpStatus.OK);
     }
 
-    @GetMapping("/getHotel")
-    public ResponseEntity<HotelDto> getHotel(Integer id) {
+    @GetMapping("/getHotel/{id}")
+    public ResponseEntity<HotelDto> getHotel(@PathVariable("id") Integer id) {
 
 	HotelDto hotelDto = new HotelDto();
 	try {

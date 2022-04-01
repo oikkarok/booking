@@ -28,7 +28,7 @@ import booking.rest.security.JwtProvider;
 @AutoConfigureMockMvc
 @ActiveProfiles("test")
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
-public class TipoHotelControllerTest extends AbstractTest {
+public class TipoCameraControllerTest extends AbstractTest {
 
     @Autowired
     private MockMvc mockMvc;
@@ -41,88 +41,88 @@ public class TipoHotelControllerTest extends AbstractTest {
     }
 
     @Test
-    public void insertTipoHotelTest() throws Exception {
+    public void insertTipoCameraTest() throws Exception {
 	this.mockMvc.perform(
-		post(new URI("/insertTipoHotel"))
+		post(new URI("/insertTipoCamera"))
 		.header("Authorization", token)
 		.accept(MediaType.APPLICATION_JSON)
-		.content("{\"id\":0,\"tipologia\":\"test\"}")
+		.content("{\"id\":0,\"tipologia\":\"test\",\"posti\":2}")
 		.contentType(MediaType.APPLICATION_JSON))
 		.andDo(print()).andExpect(status().isOk());
     }
     
     @Test
-    public void insertTipoHotelWhitoutTokenTest() throws Exception {
+    public void insertTipoCameraWhitoutTokenTest() throws Exception {
 	this.mockMvc.perform(
-		post(new URI("/insertTipoHotel"))
+		post(new URI("/insertTipoCamera"))
 		.accept(MediaType.APPLICATION_JSON)
-		.content("{\"id\":0,\"tipologia\":\"test\"}")
+		.content("{\"id\":0,\"tipologia\":\"test\",\"posti\":2}")
 		.contentType(MediaType.APPLICATION_JSON))
 		.andDo(print()).andExpect(status().isForbidden());
     }
 
     @Test
-    public void editTipoHotelTest() throws Exception {
+    public void editTipoCameraTest() throws Exception {
 	this.mockMvc
-		.perform(put(new URI("/editTipoHotel"))
+		.perform(put(new URI("/editTipoCamera"))
 		.header("Authorization", token)
 		.accept(MediaType.APPLICATION_JSON)
-		.content("{\"id\":1,\"tipologia\":\"boh\"}")
+		.content("{\"id\":1,\"tipologia\":\"test\",\"posti\":3}")
 		.contentType(MediaType.APPLICATION_JSON))
 		.andDo(print()).andExpect(status().isOk());
     }
     
     @Test
-    public void editTipoHotelWhitoutTokenTest() throws Exception {
+    public void editTipoCameraWhitoutTokenTest() throws Exception {
 	this.mockMvc
-		.perform(put(new URI("/editTipoHotel"))
+		.perform(put(new URI("/editTipoCamera"))
 		.accept(MediaType.APPLICATION_JSON)
-		.content("{\"id\":1,\"tipologia\":\"boh\"}")
+		.content("{\"id\":1,\"tipologia\":\"test\",\"posti\":3}")
 		.contentType(MediaType.APPLICATION_JSON))
 		.andDo(print()).andExpect(status().isForbidden());
     }
     
     @Test
-    public void getAllTipoHotelTest() throws Exception {
-	this.mockMvc.perform(get("/getAllTipoHotel").header("Authorization", token))
+    public void getAllTipoCameraTest() throws Exception {
+	this.mockMvc.perform(get("/getAllTipoCamera").header("Authorization", token))
 		.andDo(print()).andExpect(status().isOk());
     }
     
     @Test
-    public void getAllTipoHotelWhitoutTokenTest() throws Exception {
-	this.mockMvc.perform(get("/getAllTipoHotel"))
+    public void getAllTipoCameraWhitoutTokenTest() throws Exception {
+	this.mockMvc.perform(get("/getAllTipoCamera"))
 		.andDo(print()).andExpect(status().isForbidden());
     }
 
     @Test
-    public void getTipoHotelTest() throws Exception {
-	this.mockMvc.perform(get("/getTipoHotel/{id}", 1).header("Authorization", token))
+    public void getTipoCameraTest() throws Exception {
+	this.mockMvc.perform(get("/getTipoCamera/{id}", 1).header("Authorization", token))
 		.andDo(print()).andExpect(status().isOk());
     }
     
     @Test
-    public void getTipoHotelWhitoutTokenTest() throws Exception {
-	this.mockMvc.perform(get("/getTipoHotel/{id}", 1))
+    public void getTipoCameraWhitoutTokenTest() throws Exception {
+	this.mockMvc.perform(get("/getTipoCamera/{id}", 1))
 		.andDo(print()).andExpect(status().isForbidden());
     }
 
     @Test
-    public void deleteTipoHotelTest() throws Exception {
+    public void deleteTipoCameraTest() throws Exception {
 	this.mockMvc
-		.perform(delete(new URI("/deleteTipoHotel"))
+		.perform(delete(new URI("/deleteTipoCamera"))
 		.header("Authorization", token)
 		.accept(MediaType.APPLICATION_JSON)
-		.content("{\"id\":1,\"tipologia\":\"boh\"}")
+		.content("{\"id\":1,\"tipologia\":\"test\",\"posti\":3}")
 		.contentType(MediaType.APPLICATION_JSON))
 		.andDo(print()).andExpect(status().isOk());
     }
     
     @Test
-    public void deleteTipoHotelWhitoutTokenTest() throws Exception {
+    public void deleteTipoCameraWhitoutTokenTest() throws Exception {
 	this.mockMvc
-		.perform(delete(new URI("/deleteTipoHotel"))
+		.perform(delete(new URI("/deleteTipoCamera"))
 		.accept(MediaType.APPLICATION_JSON)
-		.content("{\"id\":1,\"tipologia\":\"boh\"}")
+		.content("{\"id\":1,\"tipologia\":\"test\",\"posti\":3}")
 		.contentType(MediaType.APPLICATION_JSON))
 		.andDo(print()).andExpect(status().isForbidden());
     }

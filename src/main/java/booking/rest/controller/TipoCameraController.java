@@ -11,6 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -53,8 +54,8 @@ public class TipoCameraController {
 	return new ResponseEntity<Integer>(service.getId(), HttpStatus.OK);
     }
 
-    @GetMapping("/getTipoCamera")
-    public ResponseEntity<TipoCameraDto> getTipoCamera(Integer id) {
+    @GetMapping("/getTipoCamera/{id}")
+    public ResponseEntity<TipoCameraDto> getTipoCamera(@PathVariable("id") Integer id) {
 
 	TipoCameraDto tipoCameraDto = new TipoCameraDto();
 	try {

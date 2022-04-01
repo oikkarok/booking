@@ -12,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -53,8 +54,8 @@ public class CameraController {
 	return new ResponseEntity<Integer>(service.getId(), HttpStatus.OK);
     }
 
-    @GetMapping("/getCamera")
-    public ResponseEntity<CameraDto> getCamera(Integer id) {
+    @GetMapping("/getCamera/{id}")
+    public ResponseEntity<CameraDto> getCamera(@PathVariable("id") Integer id) {
 
 	CameraDto cameraDto = new CameraDto();
 	try {

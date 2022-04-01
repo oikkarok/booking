@@ -11,6 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -52,8 +53,8 @@ public class DisponibilitaController {
 	return new ResponseEntity<Integer>(service.getId(), HttpStatus.OK);
     }
 
-    @GetMapping("/getDisponibilita")
-    public ResponseEntity<DisponibilitaDto> getDisponibilita(Integer id) {
+    @GetMapping("/getDisponibilita/{id}")
+    public ResponseEntity<DisponibilitaDto> getDisponibilita(@PathVariable("id") Integer id) {
 
 	DisponibilitaDto disponibilitaDto = new DisponibilitaDto();
 	try {

@@ -23,8 +23,8 @@ public class UtenteController {
     
     private static final Logger logger = LoggerFactory.getLogger(UtenteController.class);
     
-    @GetMapping("/getUtente/{id}")
-    public ResponseEntity<UtenteDto> getUtente(@PathVariable("id") Integer id) {
+    @GetMapping("/getUtenteById/{id}")
+    public ResponseEntity<UtenteDto> getUtenteById(@PathVariable("id") Integer id) {
 
 	UtenteDto utenteDto = new UtenteDto();
 	try {
@@ -40,8 +40,8 @@ public class UtenteController {
 	return new ResponseEntity<UtenteDto>(utenteDto, HttpStatus.OK);
     }
     
-    @GetMapping("/getUtente/{nome}")
-    public ResponseEntity<UtenteDto> getUtente(@PathVariable("nome") String nome) {
+    @GetMapping("/getUtenteByNome/{nome}")
+    public ResponseEntity<UtenteDto> getUtenteBynome(@PathVariable("nome") String nome) {
 
 	UtenteDto utenteDto = new UtenteDto();
 	try {

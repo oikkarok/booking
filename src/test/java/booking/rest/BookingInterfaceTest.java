@@ -5,5 +5,7 @@ public interface BookingInterfaceTest {
     public void shouldNotAllowAccessToUnauthenticatedUsersTest() throws Exception;
 
     public void shouldGenerateAuthTokenTest() throws Exception;
+
+    public String asJsonString(Object obj);
     
 }
