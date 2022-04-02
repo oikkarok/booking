@@ -8,9 +8,11 @@ import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.sql.Date;
 
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,28 +50,77 @@ public class DisponibilitaControllerTest extends AbstractTest {
     private DisponibilitaDto disponibilitaDto;
     private DisponibilitaDto disponibilitaDto2;
 
-    @SuppressWarnings("deprecation")
     @BeforeEach
-    private void setUpTest() {
-	try {
-	    entryList = new ArrayList<>();
-	    entryList.add(new UtenteDto(1, username, password));
-	    token = "Bearer".concat(JwtProvider.createJwt(username, entryList));
+    private void setUpTest() throws URISyntaxException, Exception {
+	entryList = new ArrayList<>();
+	entryList.add(new UtenteDto(1, username, password));
+	token = "Bearer".concat(JwtProvider.createJwt(username, entryList));
 
-	    tipoCameraDto = new TipoCameraDto(1, "test", 2);
-	    tipoCameraDto2 = new TipoCameraDto(2, "test", 3);
-	    tipoHotelDto = new TipoHotelDto(1, "test");
-	    hotelDto = new HotelDto(1, tipoHotelDto, "test", "test", "test", "test", 2, 2);
-	    cameraDto = new CameraDto(0, tipoCameraDto, hotelDto, null);
-	    cameraDto2 = new CameraDto(1, tipoCameraDto2, hotelDto, null);
-	    disponibilitaDto = new DisponibilitaDto(0, cameraDto, new Date(164884758), new Date(1648849383));
-	    disponibilitaDto2 = new DisponibilitaDto(0, cameraDto2, new Date(164884758), new Date(1648849383));
-	} catch (Exception e) {
-	}
+	tipoCameraDto = new TipoCameraDto(1, "test", 2);
+	tipoCameraDto2 = new TipoCameraDto(2, "test", 3);
+	tipoHotelDto = new TipoHotelDto(1, "test");
+	hotelDto = new HotelDto(1, tipoHotelDto, "test", "test", "test", "test", 2, 2);
+	cameraDto = new CameraDto(0, tipoCameraDto, hotelDto, null);
+	cameraDto2 = new CameraDto(0, tipoCameraDto2, hotelDto, null);
+	disponibilitaDto = new DisponibilitaDto(0, cameraDto, new Date(164884758), new Date(1648849383));
+	disponibilitaDto2 = new DisponibilitaDto(0, cameraDto2, new Date(164884758), new Date(1648849383));
+
+	this.mockMvc.perform(
+		post(new URI("/insertTipoCamera")).header("Authorization", token).accept(MediaType.APPLICATION_JSON)
+			.content(asJsonString(tipoCameraDto)).contentType(MediaType.APPLICATION_JSON));
+
+	this.mockMvc.perform(
+		post(new URI("/insertTipoCamera")).header("Authorization", token).accept(MediaType.APPLICATION_JSON)
+			.content(asJsonString(tipoCameraDto2)).contentType(MediaType.APPLICATION_JSON));
+
+	this.mockMvc.perform(
+		post(new URI("/insertTipoHotel")).header("Authorization", token).accept(MediaType.APPLICATION_JSON)
+			.content(asJsonString(tipoHotelDto)).contentType(MediaType.APPLICATION_JSON));
+
+	this.mockMvc
+		.perform(post(new URI("/insertHotel")).header("Authorization", token).accept(MediaType.APPLICATION_JSON)
+			.content(asJsonString(hotelDto)).contentType(MediaType.APPLICATION_JSON));
+
+	this.mockMvc.perform(
+		post(new URI("/insertCamera")).header("Authorization", token).accept(MediaType.APPLICATION_JSON)
+			.content(asJsonString(cameraDto)).contentType(MediaType.APPLICATION_JSON));
+
+	this.mockMvc.perform(
+		post(new URI("/insertCamera")).header("Authorization", token).accept(MediaType.APPLICATION_JSON)
+			.content(asJsonString(cameraDto2)).contentType(MediaType.APPLICATION_JSON));
+
     }
+
+//    @AfterEach
+//    private void cleanEnviroment() throws URISyntaxException, Exception {
+//	this.mockMvc.perform(
+//		delete(new URI("/deleteTipoCamera")).header("Authorization", token).accept(MediaType.APPLICATION_JSON)
+//			.content(asJsonString(tipoCameraDto)).contentType(MediaType.APPLICATION_JSON));
+//
+//	this.mockMvc.perform(
+//		delete(new URI("/deleteTipoCamera")).header("Authorization", token).accept(MediaType.APPLICATION_JSON)
+//			.content(asJsonString(tipoCameraDto2)).contentType(MediaType.APPLICATION_JSON));
+//
+//	this.mockMvc.perform(
+//		delete(new URI("/deleteTipoHotel")).header("Authorization", token).accept(MediaType.APPLICATION_JSON)
+//			.content(asJsonString(tipoHotelDto)).contentType(MediaType.APPLICATION_JSON));
+//
+//	this.mockMvc
+//		.perform(delete(new URI("/deleteHotel")).header("Authorization", token).accept(MediaType.APPLICATION_JSON)
+//			.content(asJsonString(hotelDto)).contentType(MediaType.APPLICATION_JSON));
+//
+//	this.mockMvc.perform(
+//		delete(new URI("/deleteCamera")).header("Authorization", token).accept(MediaType.APPLICATION_JSON)
+//			.content(asJsonString(cameraDto)).contentType(MediaType.APPLICATION_JSON));
+//
+//	this.mockMvc.perform(
+//		delete(new URI("/deleteCamera")).header("Authorization", token).accept(MediaType.APPLICATION_JSON)
+//			.content(asJsonString(cameraDto2)).contentType(MediaType.APPLICATION_JSON));
+//    }
 
     @Test
     public void insertDisponibilitaTest() throws Exception {
+	cameraDto.setId(1);
 	this.mockMvc.perform(
 		post(new URI("/insertDisponibilita")).header("Authorization", token).accept(MediaType.APPLICATION_JSON)
 			.content(asJsonString(disponibilitaDto)).contentType(MediaType.APPLICATION_JSON))
@@ -86,6 +137,7 @@ public class DisponibilitaControllerTest extends AbstractTest {
 
     @Test
     public void editDisponibilitaTest() throws Exception {
+	cameraDto2.setId(1);
 	this.mockMvc.perform(
 		put(new URI("/editDisponibilita")).header("Authorization", token).accept(MediaType.APPLICATION_JSON)
 			.content(asJsonString(disponibilitaDto2)).contentType(MediaType.APPLICATION_JSON))

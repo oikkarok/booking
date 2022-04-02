@@ -8,6 +8,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -40,7 +41,7 @@ public class HotelControllerTest extends AbstractTest {
     private HotelDto hotelDto2;
     
     @BeforeEach
-    private void setUpTest() {	
+    private void setUpTest() throws URISyntaxException, Exception {	
 	entryList = new ArrayList<>();
 	entryList.add(new UtenteDto(1, username, password));
 	token = "Bearer".concat(JwtProvider.createJwt(username, entryList));	
@@ -48,6 +49,13 @@ public class HotelControllerTest extends AbstractTest {
 	tipoHotelDto = new TipoHotelDto(1, "test");
 	hotelDto = new HotelDto(1, tipoHotelDto, "test", "test", "test", "test", 2, 2);
 	hotelDto2 = new HotelDto(1, tipoHotelDto, "test", "test", "test", "test", 2, 3);
+	
+	this.mockMvc.perform(
+		post(new URI("/insertTipoHotel"))
+		.header("Authorization", token)
+		.accept(MediaType.APPLICATION_JSON)
+		.content(asJsonString(tipoHotelDto))
+		.contentType(MediaType.APPLICATION_JSON));	
     }
 
     @Test
